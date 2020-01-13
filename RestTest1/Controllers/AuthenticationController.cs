@@ -5,7 +5,6 @@ using Microsoft.IdentityModel.Tokens;
 using RestTest1.Model;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 using System.Security.Principal;
 
@@ -36,15 +35,10 @@ namespace RestTest1.Controllers
 			}
 			else
 			{
-				return StatusCode(HttpStatusCode.Unauthorized, "Invalid credentials");
+				return Unauthorized();
 			}
 
 			return Ok(toReturn);
-		}
-
-		private ActionResult StatusCode(HttpStatusCode unauthorized, string v)
-		{
-			throw new NotImplementedException();
 		}
 
 		private string GenerateToken(string username, DateTime expires)
